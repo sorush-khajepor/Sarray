@@ -11,6 +11,9 @@ int main() {
     cout<<"===========Testing Constructors=============="<<endl;
     cout<<"scalar constructor : sardouble c(rhs=5.0,size=2) "<<endl;
     sardouble c(5.0,2);
+    assert(c[0]==5.0);
+    assert(c[1]==5.0);
+    assert(c.getSize()==2);
     cout<<c;
 
     cout<<"array constructor d = arr[2]={4.0,2.0,1.0}"<<endl;

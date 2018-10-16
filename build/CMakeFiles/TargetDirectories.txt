@@ -1,0 +1,2 @@
+/Users/sorush/Sarray/build/CMakeFiles/test_sarray3D.dir
+/Users/sorush/Sarray/build/CMakeFiles/test_sarray.dir

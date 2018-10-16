@@ -2,9 +2,11 @@
 #define SARRAY_H
 
 #include<iostream>
+#include <assert.h>
+#ifdef PYBIND
 #include "pybind11/include/pybind11/pybind11.h"
 namespace py = pybind11;
-
+#endif
 
 template <class T>
 class Sarray{
@@ -213,14 +215,14 @@ class Sarray{
             return os;
         }
     
-
+#ifdef PYBIND
         virtual void print()
         {
             for (size_t i = 0; i < size; i++) {
                 py::print( "\n data(",  i , ") = ", data[i]);
             }
         }
-    
+#endif    
 };
 
 // Sarray with 2 ranks
@@ -232,6 +234,8 @@ class Sarray2D : public Sarray<T> {
 	protected:
 		// Size of ranks
 		size_t dim[2];
+		using Sarray<T>::size;
+		using Sarray<T>::data;
 	public:
 	
 	Sarray2D(size_t sizeX, size_t sizeY)
@@ -239,7 +243,7 @@ class Sarray2D : public Sarray<T> {
 		size = sizeX*sizeY;
 		dim[0] = sizeX;
 		dim[1] = sizeY;
-		data = new T[size]()
+		data = new T[size]();
 	}
 
 
@@ -285,6 +289,7 @@ class Sarray2D : public Sarray<T> {
 	    iX = i/(dim[1]);
 	    iY = i%(dim[1]) ;
     }
+#ifdef PYBIND
         void print()
         {
             for (size_t i = 0; i < size; i++) {
@@ -294,7 +299,7 @@ class Sarray2D : public Sarray<T> {
                 py::print( "\n data(", iX,",",iY, ") = ", data[i]);
             }
         }
-
+#endif
 
 };
 

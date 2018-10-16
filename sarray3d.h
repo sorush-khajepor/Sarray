@@ -15,6 +15,8 @@ class Sarray3D : public Sarray<T> {
 
 		// Size of ranks
 		size_t dim[3];
+		using Sarray<T>::size;
+		using Sarray<T>::data;
 
 	public:
 	
@@ -71,7 +73,7 @@ class Sarray3D : public Sarray<T> {
     }
 
     // Bringing up Sarray assignment
-    using Sarray::operator=;
+    using Sarray<T>::operator=;
 
     // Get single number index of the node from cartesian index
     int getSingleIndex (const int& iX, const int& iY, const int& iZ) const
@@ -86,7 +88,7 @@ class Sarray3D : public Sarray<T> {
 	    iY = R/dim[2];
 	    iZ = R%dim[2];
     }
-
+#ifdef PYBIND
     void print()
     {
         for (size_t i = 0; i < size; i++)
@@ -96,5 +98,6 @@ class Sarray3D : public Sarray<T> {
             py::print( "\n data(", iX,",",iY,",",iZ , ") = ", data[i]);
         }
     }
+#endif    
 };
 #endif
