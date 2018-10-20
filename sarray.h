@@ -62,6 +62,7 @@ class Sarray{
 
         Sarray& operator= (const T& rhs)
         {
+
                 for (size_t i=0;i<size;i++){
                     data[i] = rhs;
                 }
@@ -98,6 +99,13 @@ class Sarray{
             return data[i];
         }
 
+        virtual Sarray operator+ () const {
+            return *this;
+        }
+
+        virtual Sarray operator- () const {
+            return (*this)*T(-1);
+        }
         virtual Sarray operator+ (const Sarray& rhs) const {
             Sarray arr(size);
             for (size_t i = 0; i < size; i++) {
