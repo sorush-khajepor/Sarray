@@ -190,11 +190,21 @@ int main() {
     l = 2*j/2 - j/(-i) + 3*j*i + i/100;
     if(isPrint) cout<<l;
     assert(l[0]==50 && l[1]==50);
+
     
-    cout<<"===========Integer * Double=============="<<endl;
-    cout<<"c={2.1,2.1}, i={1,1}. Sarray result of mix types is set by left hand side type."<<endl;
+    cout<<"====== Implitcit type casting: Integer * Double ========="<<endl;
+    cout<<"Sarray result of mix types is cast by left hand side type."<<endl;
+    cout<<"c={2.1,2.1}, i={1,1}"<<endl;
     cout<<"i*c = "<< i*c;
     cout<<"c*i = "<< c*i;
+
+    cout<<"====== Explitcit type casting ========="<<endl;
+    cout<<"Sarray can be cast to desired type, if similar casting is available for its elements. \n"
+          "For example, int -> double is defined by C++ compilers; therefore it is available by  \n"
+          "Sarray too.\n";
+    cout<<"Sarray<double> c={2.1,2.1}, Sarray<int> i={1,1}"<<endl;
+    cout<<"(Sarray<double>)i * c = "<< (sardouble)i * c;
+    cout<<"(Sarray<int>)c * i = "<< (sarint)c * i;
 
     return 0;
     
