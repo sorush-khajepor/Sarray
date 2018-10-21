@@ -181,29 +181,23 @@ int main() {
     if (isPrint) cout<<k;
     assert(eq(k[0],7.3) && eq(k[1],7.3));
 
-/*
-    cout<<"print / operator k=1/c "<<endl;
-    k = 1/c;
-    cout<<k;
+    
+    cout<<"===========Integer Sarray=============="<<endl;
+    sarint i={1,1};
+    sarint j={10,10};
+    sarint l(0,2);
 
-    cout<<"print sum funtion : c.sum() "<<endl;
-    cout<<"sum="<<c.sum()<<endl;
-
-
-    cout<<"print list constructor :sarint g={1,2}"<<endl;
-    sarint g={1,2};
-    cout<<g;
-
-   // Here order of operation is important. 
-    cout<<"print dot product d.dot(g) (int=>double)"<<endl;
-    cout<<d.dot(g)<<endl;
-    cout<<"print dot product g.dot(d) (double=>int)"<<endl;
-    cout<<g.dot(d)<<endl;
-
-    cout<<"print int-double-number, type conversion operation, sardouble h = (sardouble)g*2+d/2-c/2.1={2.95,395}"<<endl;
-    sardouble h =(sardouble) g*2+d/2-c/2.0;
-    cout<<h;
- */   
+    l = 2*j/2 - j/(-i) + 3*j*i + i/100;
+    if(isPrint) cout<<l;
+    assert(l[0]==50 && l[1]==50);
+    
+    cout<<"===========Integer * Double=============="<<endl;
+    cout<<"c={2.1,2.1}, i={1,1}. Sarray result of mix types is set by left hand side type."<<endl;
+    cout<<"i*c = "<< i*c;
+    cout<<"c*i = "<< c*i;
 
     return 0;
+    
+
+
 }
