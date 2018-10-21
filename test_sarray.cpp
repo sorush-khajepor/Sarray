@@ -1,5 +1,8 @@
+
+// Because of assert checking, compile this file in debug mode.
 #include"sarray.h"
 #include <stdlib.h>
+
 typedef Sarray<double> sardouble;
 typedef Sarray<int> sarint;
 
@@ -29,7 +32,7 @@ int main() {
     sardouble c(5.0,2);
     if (isPrint) cout<<" sardouble c(rhs=5.0,size=2) "<<endl;
     if (isPrint) cout<<c;
-    assert(eq(c[0],5.0) && eq(c[1],5.0));
+    assert(eq(c[0],5.0) && eq(c[1],4.0));
     assert(c.getSize()==2);
     cout<<"   OK. \n\n"; 
 
