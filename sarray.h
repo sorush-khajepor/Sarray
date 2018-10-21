@@ -206,7 +206,7 @@ class Sarray{
             return s;
         }
 
-        virtual const T computeVol() const {
+        virtual const T getVol() const {
             T v = T(1);
             for (size_t i = 0; i < size; i++) {
                 v = v * data[i];
@@ -214,10 +214,15 @@ class Sarray{
             return v;
         }
 
-        virtual const T dot(const Sarray& arr)const {
+        // Inner product or dot product 
+        virtual const T dot(const Sarray& arr)const
+        {
             return (*this * arr).sum();
         }
-        friend std::ostream& operator<<(std::ostream& os, const Sarray& arr){
+
+        // std::cout<< is defined.
+        friend std::ostream& operator<<(std::ostream& os, const Sarray& arr)
+        {
             for (size_t i=0;i<arr.getSize();i++){
                 os<<std::endl<<"data("<<i<<") = "<<arr[i];
             }
