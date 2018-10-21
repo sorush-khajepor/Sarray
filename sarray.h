@@ -235,6 +235,7 @@ class Sarray{
 #endif    
 };
 
+
 // Sarray with 2 ranks
 // Used for nQxnD tensors
 // iX -> first rank
