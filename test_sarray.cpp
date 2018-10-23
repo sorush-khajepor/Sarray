@@ -1,4 +1,5 @@
 #include"sarray.h"
+#include <assert.h>
 typedef Sarray<double> sardouble;
 typedef Sarray<int> sarint;
 
@@ -10,14 +11,13 @@ int main() {
     int nD =2;
     cout<<"===========Testing Constructors=============="<<endl;
     cout<<"scalar constructor : sardouble c(rhs=5.0,size=2) "<<endl;
-    sardouble c(5.0,2);
-    assert(c[0]==5.0);
-    assert(c[1]==5.0);
-    assert(c.getSize()==2);
+    sardouble c(5.5,2);
+    assert(c[0]==5.5 && c[1]==5.5);
+    assert(c.getSize()==3);
     cout<<c;
 
     cout<<"array constructor d = arr[2]={4.0,2.0,1.0}"<<endl;
-    double* arr= new double[3]{4.0,2.0,1.0};
+    double* arr= new double[3]{4.5,2.5,1.5};
     sardouble d(arr,3);
     cout<<d;
 
