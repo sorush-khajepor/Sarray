@@ -1,7 +1,18 @@
 #ifndef SARRAY_H
 #define SARRAY_H
 
+//#ifdef DEBUG 
+// execute lines for Debugging
+//#define D(x) x
+//#else 
+// Ignoring D(X) lines
+//#define D(x)
+// Deactivating assert
+//#define NDEBUG
+//#endif
+
 #include<iostream>
+
 #ifdef PYBIND
 #include "pybind11/include/pybind11/pybind11.h"
 namespace py = pybind11;
@@ -61,6 +72,7 @@ class Sarray{
 
         Sarray& operator= (const T& rhs)
         {
+
                 for (size_t i=0;i<size;i++){
                     data[i] = rhs;
                 }
@@ -97,6 +109,13 @@ class Sarray{
             return data[i];
         }
 
+        virtual Sarray operator+ () const {
+            return *this;
+        }
+
+        virtual Sarray operator- () const {
+            return (*this)*T(-1);
+        }
         virtual Sarray operator+ (const Sarray& rhs) const {
             Sarray arr(size);
             for (size_t i = 0; i < size; i++) {
@@ -164,6 +183,8 @@ class Sarray{
             }
             return arr;
         }
+
+
         virtual Sarray operator* (const T& rhs) const {
             Sarray arr(size);
             for (size_t i = 0; i < size; i++) {
@@ -195,7 +216,7 @@ class Sarray{
             return s;
         }
 
-        virtual const T computeVol() const {
+        virtual const T getVol() const {
             T v = T(1);
             for (size_t i = 0; i < size; i++) {
                 v = v * data[i];
@@ -203,10 +224,15 @@ class Sarray{
             return v;
         }
 
-        virtual const T dot(const Sarray& arr)const {
+        // Inner product or dot product 
+        virtual const T dot(const Sarray& arr)const
+        {
             return (*this * arr).sum();
         }
-        friend std::ostream& operator<<(std::ostream& os, const Sarray& arr){
+
+        // std::cout<< is defined.
+        friend std::ostream& operator<<(std::ostream& os, const Sarray& arr)
+        {
             for (size_t i=0;i<arr.getSize();i++){
                 os<<std::endl<<"data("<<i<<") = "<<arr[i];
             }
@@ -223,6 +249,7 @@ class Sarray{
         }
 #endif    
 };
+
 
 // Sarray with 2 ranks
 // Used for nQxnD tensors

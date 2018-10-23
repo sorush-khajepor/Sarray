@@ -3,8 +3,6 @@ project(sarray)
 
 
 set (CMAKE_CXX_STANDARD 11)
-
-
 # Use just one of these for Pybind11:
 # GCC/clang:
 #set(PYBIND11_CPP_STANDARD -std=c++11)
