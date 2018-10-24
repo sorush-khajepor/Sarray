@@ -1,16 +1,6 @@
 #ifndef SARRAY_H
 #define SARRAY_H
 
-//#ifdef DEBUG 
-// execute lines for Debugging
-//#define D(x) x
-//#else 
-// Ignoring D(X) lines
-//#define D(x)
-// Deactivating assert
-//#define NDEBUG
-//#endif
-
 #include<iostream>
 
 #ifdef PYBIND
