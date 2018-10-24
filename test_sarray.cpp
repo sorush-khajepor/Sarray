@@ -1,10 +1,10 @@
 
-// Because of assert checking, compile this file in debug mode.
+// Because of SASSERT checking, compile this file in debug mode.
 #include"sarray.h"
 #include<cmath>
 
-///#undef NDEBUG
-#include<cassert>
+#define SDEBUG
+#include"sdebug.h"
 
 typedef Sarray<double> sardouble;
 typedef Sarray<int> sarint;
@@ -17,7 +17,7 @@ bool eq(double a, double b)
 
     double eps = 0.000001;
 
-    if (abs(a-b)>eps) 
+    if (abs(a-b)>eps)
     {
         return false;
     }
@@ -40,42 +40,42 @@ int main() {
     sardouble c(5.0,2);
     if (isPrint) cout<<" sardouble c(rhs=5.0,size=2) "<<endl;
     if (isPrint) cout<<c;
-    assert(eq(c[0],4.0) && eq(c[1],5.0));
-    assert(c.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(c[0],5.0) && eq(c[1],5.0),"Error");
+    SASSERT(c.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"array constructor ..."<<endl;
     double* arr= new double[3]{4.0,2.0,1.0};
     sardouble d(arr,3);
     if (isPrint) cout<<"d = arr[2]={4.0,2.0,1.0}"<<endl;
     if (isPrint) cout<<d;
-    assert(eq(d[0],4.0) && eq(d[1],2.0) && eq(d[2],1.0) );
-    assert(d.getSize()==3);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(d[0],4.0) && eq(d[1],2.0) && eq(d[2],1.0),"Error" );
+    SASSERT(d.getSize()==3,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"same type constructor 1 ..."<<endl;
     sardouble e=c;
     if (isPrint) cout<<"sardouble e=c"<<endl;
     if (isPrint) cout<<e;
-    assert(eq(e[0],5.0) && eq(e[1],5.0));
-    assert(e.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(e[0],5.0) && eq(e[1],5.0),"Error");
+    SASSERT(e.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Same type constructor 2 "<<endl;
     sardouble f(d);
     if (isPrint) cout<<"sardouble f(d)"<<endl;
     if (isPrint) cout<<f;
-    assert(eq(f[0],4.0) && eq(f[1],2.0) && eq(f[2],1.0) );
-    assert(d.getSize()==3);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(f[0],4.0) && eq(f[1],2.0) && eq(f[2],1.0),"Error" );
+    SASSERT(d.getSize()==3,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"List constructor ... "<<endl;
     sardouble g{1.,2.};
     if (isPrint) cout<<"sardouble g = {1.,2.}"<<endl;
     if (isPrint) cout<<g;
-    assert(eq(g[0],1.0) && eq(g[1],2.0));
-    assert(g.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(g[0],1.0) && eq(g[1],2.0),"Error");
+    SASSERT(g.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
 
     cout<<"===========Assignment=============="<<endl;
@@ -83,18 +83,18 @@ int main() {
     c=2.1;
     if (isPrint) cout<<"c=2.1"<<endl;
     if (isPrint) cout<<c;
-    assert(eq(c[0],2.1) && eq(c[1],2.1));
-    assert(c.getSize()==2);
-    cout<<"   OK. \n\n"; 
-    
+    SASSERT(eq(c[0],2.1) && eq(c[1],2.1),"Error");
+    SASSERT(c.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
+
     cout<<"print same type & size assignment ..."<<endl;
     sardouble m(3);
     m=d;
     if (isPrint) cout<<"sardouble m(3); m=d;"<<endl;
     if (isPrint) cout<<m;
-    assert(eq(m[0],4.0) && eq(m[1],2.0) && eq(m[2],1.0) );
-    assert(m.getSize()==3);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(m[0],4.0) && eq(m[1],2.0) && eq(m[2],1.0),"Error" );
+    SASSERT(m.getSize()==3,"Error");
+    cout<<"   OK. \n\n";
 
 
 
@@ -104,16 +104,16 @@ int main() {
     cout<<"testing operator +un: "<<endl;
     un = (+un);
     if (isPrint) cout<<un;
-    assert(eq(un[0],1.5) && eq(un[1],-2.5) );
-    assert(un.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(un[0],1.5) && eq(un[1],-2.5),"Error" );
+    SASSERT(un.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Testing operator -un: "<<endl;
     un = (-un);
     if (isPrint) cout<<un;
-    assert(eq(un[0],-1.5) && eq(un[1],2.5) );
-    assert(un.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(un[0],-1.5) && eq(un[1],2.5),"Error" );
+    SASSERT(un.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"===========Operators=============="<<endl;
     sardouble h={2.0,2.0};
@@ -125,108 +125,108 @@ int main() {
     k = c+ 2.1;
     if (isPrint) cout<<"k=c+2.1 "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.2) && eq(k[1],4.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.2) && eq(k[1],4.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Left hand side + operator ... "<<endl;
     k = 2.1+c;
     if (isPrint) cout<<"k=2.1+c "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.2) && eq(k[1],4.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.2) && eq(k[1],4.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Right hand side - operator ... "<<endl;
     k = c- 2.0;
     if (isPrint) cout<<"k=c-2.0 "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],0.1) && eq(k[1],0.1));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],0.1) && eq(k[1],0.1),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Left hand side - operator ... "<<endl;
     k = 2.0-c;
     if (isPrint) cout<<"k=2.0-c "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],-0.1) && eq(k[1],-0.1));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],-0.1) && eq(k[1],-0.1),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Right hand side * operator "<<endl;
     k = c* 2.0;
     if (isPrint) cout<<"k=c*2.0 "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.2) && eq(k[1],4.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.2) && eq(k[1],4.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Left hand side * operator ..."<<endl;
     k = 2.0*c;
     if (isPrint) cout<<"k=2.0*c "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.2) && eq(k[1],4.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.2) && eq(k[1],4.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Right hand side / operator ..."<<endl;
     k = c / 21.0;
     if (isPrint) cout<<"k=c/21.0 "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],0.1) && eq(k[1],0.1));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],0.1) && eq(k[1],0.1),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Left hand side / operator ..."<<endl;
     k = 0.42/c;
     if (isPrint) cout<<"k=0.42/c "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],0.2) && eq(k[1],0.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],0.2) && eq(k[1],0.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"Mix operator ..."<<endl;
     k = k * c / 21.0;
     if (isPrint) cout<<"k=c/21.0 "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],0.02) && eq(k[1],0.02));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],0.02) && eq(k[1],0.02),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<"===========Sarray & Sarray=============="<<endl;
     cout<<" + operator ... "<<endl;
     k = c+ h;
     if (isPrint) cout<<"k=c+h "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.1) && eq(k[1],4.1));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.1) && eq(k[1],4.1),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
 
     cout<<" - operator ..."<<endl;
     k = c- h;
     if (isPrint) cout<<"k=c-h"<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],0.1) && eq(k[1],0.1));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],0.1) && eq(k[1],0.1),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
 
     cout<<" * operator ..."<<endl;
     k = c*h;
     if (isPrint) cout<<"k=c*h"<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],4.2) && eq(k[1],4.2));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],4.2) && eq(k[1],4.2),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
     cout<<" / operator ..."<<endl;
     if (isPrint) cout<<"k=c/h"<<endl;
     k = c / h;
     if (isPrint) cout<<k;
-    assert(eq(k[0],1.05) && eq(k[1],1.05));
-    assert(k.getSize()==2);
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],1.05) && eq(k[1],1.05),"Error");
+    SASSERT(k.getSize()==2,"Error");
+    cout<<"   OK. \n\n";
 
 
     cout<<"===========Sarray & Scalar & Sarray=============="<<endl;
@@ -234,10 +234,10 @@ int main() {
     k = c/2.0 * h + 1.0 - 2*c*0.5 - (+h)*(-c) + c/(0.5*h) ;
     if (isPrint) cout<<"k = c/0.5 * h + 1.0-2*c*0.5-(+h)*(-c) = {7.3,7.3} "<<endl;
     if (isPrint) cout<<k;
-    assert(eq(k[0],7.3) && eq(k[1],7.3));
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(k[0],7.3) && eq(k[1],7.3),"Error");
+    cout<<"   OK. \n\n";
 
-    
+
     cout<<"===========Integer Sarray=============="<<endl;
     sarint i={1,1};
     sarint j={10,10};
@@ -246,10 +246,10 @@ int main() {
     if (isPrint) cout<<"sarint i={1,1},  sarint j={10,10}, sarint l(0,2)"<<endl;
     if (isPrint) cout<<"l = 2*j/2 - j/(-i) + 3*j*i + i/100"<<endl;
     if(isPrint) cout<<l;
-    assert(l[0]==50 && l[1]==50);
-    cout<<"   OK. \n\n"; 
+    SASSERT(l[0]==50 && l[1]==50,"Error");
+    cout<<"   OK. \n\n";
 
-    
+
     cout<<"====== Implitcit type casting: Integer * Double ========="<<endl;
     if (!isPrint) cout<<"\nSwitch on isPrint variable to see the results of this test.\n"<<endl;
     if (isPrint) cout<<"Sarray result of mix types is cast by left hand side type."<<endl;
@@ -278,8 +278,8 @@ int main() {
     if (isPrint) cout<<" Note: answer is double because left hand side of dot product is double.\n"
                        "See Explicit Casting to change this."<<endl;
 
-    assert(eq(r,4.5));
-    cout<<"   OK. \n\n"; 
+    SASSERT(eq(r,4.5),"Error");
+    cout<<"   OK. \n\n";
 
 
     return 0;
