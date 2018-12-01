@@ -3,8 +3,7 @@
 #include"sarray.h"
 #include<cmath>
 
-#define SDEBUG
-#include"sdebug.h"
+
 
 typedef Sarray<double> sardouble;
 typedef Sarray<int> sarint;

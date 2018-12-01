@@ -15,61 +15,61 @@ class Sarray3D : public Sarray<T> {
 
 		// Size of ranks
 		size_t dim[3];
-		using Sarray<T>::size;
-		using Sarray<T>::data;
+		using Sarray<T>::_size;
+		using Sarray<T>::_data;
 
 	public:
 	
 	Sarray3D(size_t sizeX, size_t sizeY, size_t sizeZ)
 	{
-		size = sizeX*sizeY*sizeZ;
+		_size = sizeX*sizeY*sizeZ;
 		dim[0] = sizeX;
 		dim[1] = sizeY;
 		dim[2] = sizeZ;
-		data = new T[size]();
+		_data = new T[_size]();
 	}
 
 	//X -> plane, Y -> line, Z -> point
     Sarray3D(std::initializer_list<T> rhs,size_t sizeX, size_t sizeY, size_t sizeZ) 
     {
-        size = rhs.size();
+        _size = rhs.size();
 	    dim[0]=sizeX;
 	    dim[1]=sizeY;
 	    dim[2]=sizeZ;
-        data = new T[size];
-        std::copy(rhs.begin(), rhs.end(), data);
+        _data = new T[size];
+        std::copy(rhs.begin(), rhs.end(), _data);
     }
 
     Sarray3D(const T rhs[], size_t sizeX, size_t sizeY, size_t sizeZ)
     {
-        size = sizeX*sizeY*sizeZ;
+        _size = sizeX*sizeY*sizeZ;
 	    dim[0]=sizeX;
 	    dim[1]=sizeY;
 	    dim[2]=sizeZ;
-        data = new T[size]();
+        _data = new T[_size]();
 	    *this = rhs;
     }
 
     Sarray3D(const T rhs,size_t sizeX, size_t sizeY, size_t sizeZ)
     {
-        size = sizeX*sizeY*sizeZ;
+        _size = sizeX*sizeY*sizeZ;
 	    dim[0]=sizeX;
 	    dim[1]=sizeY;
 	    dim[2]=sizeZ;
-        data = new T[size]();
+        _data = new T[_size]();
 	    *this = rhs;
     }
 
     // Operator () is reserved for accessing elements
     T& operator() (const int& iX, const int& iY,const int& iZ)
     {
-        return data[getSingleIndex(iX,iY,iZ)];
+        return _data[getSingleIndex(iX,iY,iZ)];
     }
 
     // Constant access to Node through operator ()
 	const T& operator() (const int& iX, const int& iY,const int& iZ) const 
     {
-        return data[getSingleIndex(iX,iY,iZ)];
+        return _data[getSingleIndex(iX,iY,iZ)];
     }
 
     // Bringing up Sarray assignment
