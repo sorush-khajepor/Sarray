@@ -13,7 +13,8 @@ namespace py = pybind11;
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
 Type T must be of numeric type such as int and double because of the purpose.
-For arithmetic operations arrays must have the same size.
+Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
+
 */
 template <class T>
 class Sarray {
@@ -24,7 +25,7 @@ protected:
 	size_t _size;
 
 private:
-	
+
 	// Set size of Sarray and allocates memory for array items
 	void setSize(size_t size) {
 		_size = size;
@@ -47,17 +48,17 @@ public:
 	}
 
 	Sarray(std::initializer_list<T> rhs) {
-		setSize( rhs.size());
+		setSize(rhs.size());
 		std::copy(rhs.begin(), rhs.end(), _items);
 	}
 
 	Sarray(const T rhs[], size_t size) {
-		setSize( size);
+		setSize(size);
 		*this = rhs;
 	}
 
 	Sarray(const T rhs, size_t size) {
-		setSize( size);
+		setSize(size);
 		*this = rhs;
 	}
 
@@ -81,6 +82,7 @@ public:
 		return *this;
 	}
 
+	// C language array assignment
 	// This assignment assumes size of rhs is the same as current Sarray.
 	virtual Sarray& operator= (const T rhs[])
 	{
@@ -160,7 +162,7 @@ public:
 	}
 
 
-		virtual Sarray operator+ (const T& rhs) const {
+	virtual Sarray operator+ (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
 			arr._items[i] = this->_items[i] + rhs;
@@ -190,7 +192,6 @@ public:
 		return arr;
 	}
 
-
 	virtual Sarray operator* (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
@@ -198,6 +199,7 @@ public:
 		}
 		return arr;
 	}
+
 	virtual Sarray operator/ (const Sarray& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
