@@ -20,8 +20,16 @@ class Sarray {
 
 protected:
 
-	T* _data;
+	T* _items;
 	size_t _size;
+
+private:
+	
+	// Set size of Sarray and allocates memory for array items
+	void setSize(size_t size) {
+		_size = size;
+		_items = new T[size]();
+	}
 
 public:
 
@@ -33,27 +41,23 @@ public:
 	}
 
 
-	Sarray(size_t size_)
+	Sarray(size_t size)
 	{
-		_size = size_;
-		_data = new T[_size]();
+		setSize(size);
 	}
 
 	Sarray(std::initializer_list<T> rhs) {
-		_size = rhs.size();
-		_data = new T[_size];
-		std::copy(rhs.begin(), rhs.end(), _data);
+		setSize( rhs.size());
+		std::copy(rhs.begin(), rhs.end(), _items);
 	}
 
-	Sarray(const T rhs[], size_t size_) {
-		_size = size_;
-		_data = new T[_size];
+	Sarray(const T rhs[], size_t size) {
+		setSize( size);
 		*this = rhs;
 	}
 
-	Sarray(const T rhs, size_t size_) {
-		_size = size_;
-		_data = new T[_size];
+	Sarray(const T rhs, size_t size) {
+		setSize( size);
 		*this = rhs;
 	}
 
@@ -64,7 +68,7 @@ public:
 	operator Sarray<U>() {
 		Sarray<U> array(_size);
 		for (size_t i = 0; i < _size; i++) {
-			array[i] = (U)_data[i];
+			array[i] = (U)_items[i];
 		}
 		return array;
 	}
@@ -72,7 +76,7 @@ public:
 	Sarray& operator= (const T& rhs)
 	{
 		for (size_t i = 0; i < _size; i++) {
-			_data[i] = rhs;
+			_items[i] = rhs;
 		}
 		return *this;
 	}
@@ -81,7 +85,7 @@ public:
 	virtual Sarray& operator= (const T rhs[])
 	{
 		for (size_t i = 0; i < _size; i++) {
-			_data[i] = rhs[i];
+			_items[i] = rhs[i];
 		}
 		return *this;
 	}
@@ -91,7 +95,7 @@ public:
 	{
 		SASSERT(rhs._size == _size, "Assignment with different size array.");
 		for (size_t i = 0; i < _size; i++) {
-			_data[i] = rhs[i];
+			_items[i] = rhs[i];
 		}
 		return *this;
 	}
@@ -99,15 +103,15 @@ public:
 	virtual void copyTo(T lhs[]) const
 	{
 		for (size_t i = 0; i < _size; i++) {
-			lhs[i] = _data[i];
+			lhs[i] = _items[i];
 		}
 	}
 
 	T& operator[](const size_t& i) {
-		return _data[i];
+		return _items[i];
 	}
 	const T& operator[] (const size_t& i)const {
-		return _data[i];
+		return _items[i];
 	}
 
 	virtual Sarray operator+ () const {
@@ -120,7 +124,7 @@ public:
 	virtual Sarray operator+ (const Sarray& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] + rhs._data[i];
+			arr._items[i] = this->_items[i] + rhs._items[i];
 		}
 		return arr;
 	}
@@ -150,7 +154,7 @@ public:
 	{
 		Sarray<T> arr(rhs._size);
 		for (size_t i = 0; i < rhs._size; i++) {
-			arr._data[i] = lhs / rhs._data[i];
+			arr._items[i] = lhs / rhs._items[i];
 		}
 		return arr;
 	}
@@ -159,7 +163,7 @@ public:
 		virtual Sarray operator+ (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] + rhs;
+			arr._items[i] = this->_items[i] + rhs;
 		}
 		return arr;
 	}
@@ -167,21 +171,21 @@ public:
 	virtual Sarray operator- (const Sarray& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] - rhs._data[i];
+			arr._items[i] = this->_items[i] - rhs._items[i];
 		}
 		return arr;
 	}
 	virtual Sarray operator- (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] - rhs;
+			arr._items[i] = this->_items[i] - rhs;
 		}
 		return arr;
 	}
 	virtual Sarray operator* (const Sarray& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] * rhs._data[i];
+			arr._items[i] = this->_items[i] * rhs._items[i];
 		}
 		return arr;
 	}
@@ -190,14 +194,14 @@ public:
 	virtual Sarray operator* (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] * rhs;
+			arr._items[i] = this->_items[i] * rhs;
 		}
 		return arr;
 	}
 	virtual Sarray operator/ (const Sarray& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] / rhs._data[i];
+			arr._items[i] = this->_items[i] / rhs._items[i];
 		}
 		return arr;
 	}
@@ -205,7 +209,7 @@ public:
 	virtual Sarray operator/ (const T& rhs) const {
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
-			arr._data[i] = this->_data[i] / rhs;
+			arr._items[i] = this->_items[i] / rhs;
 		}
 		return arr;
 	}
@@ -213,7 +217,7 @@ public:
 	virtual const T sum() const {
 		T s = T();
 		for (size_t i = 0; i < _size; i++) {
-			s = s + _data[i];
+			s = s + _items[i];
 		}
 		return s;
 	}
@@ -221,7 +225,7 @@ public:
 	virtual const T getVol() const {
 		T v = T(1);
 		for (size_t i = 0; i < _size; i++) {
-			v = v * _data[i];
+			v = v * _items[i];
 		}
 		return v;
 	}
@@ -263,7 +267,7 @@ protected:
 	// Size of ranks
 	size_t dim[2];
 	using Sarray<T>::_size;
-	using Sarray<T>::_data;
+	using Sarray<T>::_items;
 public:
 
 	Sarray2D(size_t sizeX, size_t sizeY)
@@ -271,7 +275,7 @@ public:
 		_size = sizeX * sizeY;
 		dim[0] = sizeX;
 		dim[1] = sizeY;
-		_data = new T[_size]();
+		_items = new T[_size]();
 	}
 
 
@@ -280,15 +284,15 @@ public:
 		_size = rhs.size();
 		dim[0] = sizeX;
 		dim[1] = sizeY;
-		_data = new T[size];
-		std::copy(rhs.begin(), rhs.end(), _data);
+		_items = new T[size];
+		std::copy(rhs.begin(), rhs.end(), _items);
 	}
 
 	Sarray2D(const T rhs[], size_t sizeX, size_t sizeY) {
 		_size = sizeX * sizeY;
 		dim[0] = sizeX;
 		dim[1] = sizeY;
-		_data = new T[_size]();
+		_items = new T[_size]();
 		*this = rhs;
 	}
 
@@ -296,17 +300,17 @@ public:
 		_size = sizeX * sizeY;
 		dim[0] = sizeX;
 		dim[1] = sizeY;
-		_data = new T[_size]();
+		_items = new T[_size]();
 		*this = rhs;
 	}
 	// Operator () is reserved for accessing elements
 	T& operator() (const int& iX, const int& iY) {
-		return _data[getSingleIndex(iX, iY)];
+		return _items[getSingleIndex(iX, iY)];
 	}
 
 	// Constant access to Node through operator ()
 	const T& operator() (const int& iX, const int& iY) const {
-		return _data[getSingleIndex(iX, iY)];
+		return _items[getSingleIndex(iX, iY)];
 	}
 
 	// Get single number index of the node from cartesian index
