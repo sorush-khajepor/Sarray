@@ -12,6 +12,7 @@ namespace py = pybind11;
 
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
+Supported operations: +, -, *, /, negative, positive.
 Type T must be of numeric type such as int and double because of the purpose.
 Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
 Assumption: Assignment of Sarray with C language array assumes C array has the same size.
