@@ -14,7 +14,8 @@ namespace py = pybind11;
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
 Type T must be of numeric type such as int and double because of the purpose.
 Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
-
+Assumption: Assignment of Sarray with C language array assumes C array has the same size.
+Assumption: CopyTo C-language-array assumes the array has the same size as this Sarray.
 */
 template <class T>
 class Sarray {
@@ -102,6 +103,8 @@ public:
 		return *this;
 	}
 
+	// This Copies Sarray to an C language array
+	// This assumes lhs has the same size as this Sarray.
 	virtual void copyTo(T lhs[]) const
 	{
 		for (size_t i = 0; i < _size; i++) {
@@ -109,9 +112,12 @@ public:
 		}
 	}
 
+	// Read-Write access to items
 	T& operator[](const size_t& i) {
 		return _items[i];
 	}
+
+	// Read-only access to items
 	const T& operator[] (const size_t& i)const {
 		return _items[i];
 	}
