@@ -8,6 +8,10 @@
 namespace py = pybind11;
 #endif
 
+/*
+Sarray is an array of numbers which facilitate arithmitic operations of arrays.
+Type T must be of numeric type such as int and double because of the purpose.
+*/
 template <class T>
 class Sarray{
 
@@ -18,8 +22,8 @@ class Sarray{
 
     public:
 
-    	// Default construction
-    	// Data is not allocated here. Becareful for implementaion. 
+    	
+    	// Data is not allocated in the default constructor.
         Sarray() 
         {
             size = 0;
