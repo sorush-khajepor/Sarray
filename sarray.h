@@ -130,6 +130,7 @@ public:
 		return (*this)*T(-1);
 	}
 	virtual Sarray operator+ (const Sarray& rhs) const {
+		SASSERT(rhs._size == _size, "+ operation with different size array.");
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
 			arr._items[i] = this->_items[i] + rhs._items[i];
@@ -177,6 +178,7 @@ public:
 	}
 
 	virtual Sarray operator- (const Sarray& rhs) const {
+		SASSERT(rhs._size == _size, " - operator with different size array.");
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
 			arr._items[i] = this->_items[i] - rhs._items[i];
@@ -191,6 +193,7 @@ public:
 		return arr;
 	}
 	virtual Sarray operator* (const Sarray& rhs) const {
+		SASSERT(rhs._size == _size, " * operator with different size array.");
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
 			arr._items[i] = this->_items[i] * rhs._items[i];
@@ -207,6 +210,7 @@ public:
 	}
 
 	virtual Sarray operator/ (const Sarray& rhs) const {
+		SASSERT(rhs._size == _size, "/ operator with different size array.");
 		Sarray arr(_size);
 		for (size_t i = 0; i < _size; i++) {
 			arr._items[i] = this->_items[i] / rhs._items[i];
@@ -239,9 +243,10 @@ public:
 	}
 
 	// Inner product or dot product 
-	virtual const T dot(const Sarray& arr)const
+	virtual const T dot(const Sarray& rhs)const
 	{
-		return (*this * arr).sum();
+		SASSERT(rhs._size == _size, " dot product with different size array.");
+		return (*this * rhs).sum();
 	}
 
 	// std::cout is defined.
