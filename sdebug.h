@@ -1,3 +1,9 @@
+/*
+Exposes D and SASSERT function when is defined.
+Usage: define it at the top of the file which should be debugged:
+#define SDEBUG
+
+*/
 #ifdef SDEBUG
 
   // NDEBUG switches assertation off. For safety, it is undefined.
