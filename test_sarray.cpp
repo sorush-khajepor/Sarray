@@ -281,6 +281,8 @@ int main() {
     SASSERT(eq(r,4.5),"Error");
     cout<<"   OK. \n\n";
 
+	cout << "Press Enter to close.\n\n";
+	cin.get();
 
     return 0;
 }
