@@ -12,11 +12,20 @@ namespace py = pybind11;
 
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
-Supported operations: +, -, *, /, negative, positive.
-Type T must be of numeric type such as int and double because of the purpose.
+Supported operations are: +, -, *, /, negative, positive, cout, and type casting.
+Type T must be of numeric type such as int and double because of the purpose of Sarray.
 Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
 Assumption: Assignment of Sarray with C language array assumes C array has the same size.
 Assumption: CopyTo C-language-array assumes the array has the same size as this Sarray.
+Note: Implicit type promotion through arithmetic operations is not supported. The default
+behavior is casting the result based on the left hand side of operation. For example,
+ Sarray<int> i,
+ Sarray<double> d 
+ i*d returns an array with type Sarray<int>
+ d*i returns an array with type Sarray<double>
+ To avoid this use explicit casting:
+ Sarray<double> i * d returns an array with type Sarray<double>
+
 */
 template <class T>
 class Sarray {
