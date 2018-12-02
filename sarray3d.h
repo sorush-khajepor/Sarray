@@ -88,16 +88,5 @@ class Sarray3D : public Sarray<T> {
 	    iY = R/dim[2];
 	    iZ = R%dim[2];
     }
-#ifdef PYBIND
-    void print()
-    {
-        for (size_t i = 0; i < size; i++)
-        {
-            size_t iX,iY,iZ;
-            getCartIndex(i,iX,iY,iZ);
-            py::print( "\n data(", iX,",",iY,",",iZ , ") = ", data[i]);
-        }
-    }
-#endif    
 };
 #endif

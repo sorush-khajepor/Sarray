@@ -5,10 +5,6 @@
 
 #include<iostream>
 
-#ifdef PYBIND
-#include "pybind11/include/pybind11/pybind11.h"
-namespace py = pybind11;
-#endif
 
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
@@ -297,15 +293,6 @@ public:
 		return os;
 	}
 
-#ifdef PYBIND
-	virtual void print()
-	{
-		for (size_t i = 0; i < size; i++)
-		{
-			py::print("\n data(", i, ") = ", data[i]);
-		}
-	}
-#endif    
 };
 
 
@@ -378,17 +365,6 @@ public:
 		iX = i / (dim[1]);
 		iY = i % (dim[1]);
 	}
-#ifdef PYBIND
-	void print()
-	{
-		for (size_t i = 0; i < size; i++) {
-			size_t iX, iY, iZ;
-			getCartIndex(i, iX, iY);
-
-			py::print("\n data(", iX, ",", iY, ") = ", data[i]);
-		}
-	}
-#endif
 
 };
 
