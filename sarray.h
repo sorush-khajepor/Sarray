@@ -1,27 +1,24 @@
 #ifndef SARRAY_H
 #define SARRAY_H
-#define SDEBUG
-#include"sdebug.h"
 
+// SDEBUG activates debug mode and assertion.
+#define SDEBUG
+
+// Handles Debug and Assert functions. Debug functions are not
+// employed if SDEBUG is not defined.
+#include"sdebug.h"
 #include<iostream>
 
 
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
-Supported operations are: +, -, *, /, negative, positive, cout, and type casting.
+Supported operations are: +, -, *, /, negative, positive, dot product, cout, and explicit 
+type casting, and promoted implicit type casting.
 Type T must be of numeric type such as int and double because of the purpose of Sarray.
 Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
 Assumption: Assignment of Sarray with C language array assumes C array has the same size.
 Assumption: CopyTo C-language-array assumes the array has the same size as this Sarray.
-Note: Implicit type promotion through arithmetic operations is not supported. The default
-behavior is casting the result based on the left hand side of operation. For example,
- Sarray<int> i,
- Sarray<double> d
- i*d returns an array with type Sarray<int>
- d*i returns an array with type Sarray<double>
- To avoid this use explicit casting:
- Sarray<double> i * d returns an array with type Sarray<double>
-
+Note: Implicit type promotion through arithmetic operations is supported. 
 */
 template <class T>
 class Sarray {
@@ -164,6 +161,7 @@ public:
 		return result;
 	}
 
+	// This handles operation of: scalar + array
 	template<class U>
 	friend auto operator+ (const U& lhs, const Sarray<T>& rhs)
 	{
@@ -171,13 +169,6 @@ public:
 		result = rhs + lhs;
 		return result;
 	}
-
-
-
-	
-
-	
-
 
 	template<class U>
 	auto operator- (const Sarray<U>& rhs) const
@@ -200,6 +191,7 @@ public:
 		return result;
 	}
 
+	// This handles operation of: scalar - array
 	template<class U>
 	friend auto operator- (const U& lhs, const Sarray<T>& rhs)
 	{
@@ -236,6 +228,7 @@ public:
 		return result;
 	}
 
+	// This handles operation of: scalar * array
 	template<class U>
 	friend auto operator* (const U& lhs, const Sarray<T>& rhs)
 	{
@@ -266,6 +259,7 @@ public:
 		return result;
 	}
 
+	// This handles operation of: scalar / array
 	template<class U>
 	friend auto operator/ (const U& lhs, const Sarray<T>& rhs)
 	{
@@ -276,9 +270,6 @@ public:
 		}
 		return result;
 	}
-
-
-
 
 
 	virtual const T sum() const {
@@ -301,9 +292,10 @@ public:
 	}
 
 	// Inner product or dot product 
-	virtual const T dot(const Sarray& rhs)const
+	template<class U>
+	const auto dot(const Sarray<U>& rhs)const
 	{
-		SASSERT(rhs._size == _size, " Dot product with different size array.");
+		SASSERT(rhs.getSize() == _size, " Dot product with different size array.");
 		return (*this * rhs).sum();
 	}
 

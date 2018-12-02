@@ -1,5 +1,6 @@
 
 // Because of SASSERT checking, compile this file in debug mode.
+#define SDEBUG
 #include"sarray.h"
 // This is added to use abs() function
 #include<cmath>
@@ -38,7 +39,7 @@ int main() {
 #endif
 
 	// Print results on screen.
-	bool isPrint = false;
+	bool isPrint = true;
 
 
 	cout << "===========Testing Constructors==============" << endl;
@@ -311,12 +312,11 @@ int main() {
 	cout << " Dot product ..." << endl;
 	if (isPrint) cout << " c={3.0,1.5}, i={1,1} " << endl;
 	c[0] = 3.0; c[1] = 1.5;
-	double r = c.dot(i);
-	if (isPrint) cout << "c.dot(i) = " << r << endl;
-	if (isPrint) cout << " Note: answer is double because left hand side of dot product is double.\n"
-		"See Explicit Casting to change this." << endl;
+	if (isPrint) cout << "c.dot(i) = " << c.dot(i) << endl;
+	if (isPrint) cout << "i.dot(c) = " << i.dot(c) << endl;
 
-	SASSERT(eq(r, 4.5), "Error");
+	SASSERT(eq(c.dot(i), 4.5), "Error");
+	SASSERT(typeid(c.dot(i))==typeid(double)&& typeid(i.dot(c)) == typeid(double), "Error");
 	cout << "   OK. \n\n";
 
 	cout << "Press Enter to close.\n\n";
