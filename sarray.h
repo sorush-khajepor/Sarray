@@ -16,7 +16,7 @@ Assumption: CopyTo C-language-array assumes the array has the same size as this 
 Note: Implicit type promotion through arithmetic operations is not supported. The default
 behavior is casting the result based on the left hand side of operation. For example,
  Sarray<int> i,
- Sarray<double> d 
+ Sarray<double> d
  i*d returns an array with type Sarray<int>
  d*i returns an array with type Sarray<double>
  To avoid this use explicit casting:
@@ -142,119 +142,144 @@ public:
 		return *this;
 	}
 
-	virtual Sarray operator- () const
+	template<class U>
+	auto operator+ (const Sarray<U>& rhs) const
+	{
+		SASSERT(rhs.getSize() == _size, " + operation with different size array.");
+		Sarray<decltype(_items[0] + rhs[0])> result(_size);
+		for (size_t i = 0; i < _size; i++) {
+			result[i] = _items[i] + rhs[i];
+		}
+		return result;
+	}
+
+	template<class U>
+	auto operator+ (const U& rhs) const
+	{
+		Sarray<decltype(_items[0] + rhs)> result(_size);
+		for (size_t i = 0; i < _size; i++)
+		{
+			result[i] = _items[i] + rhs;
+		}
+		return result;
+	}
+
+	template<class U>
+	friend auto operator+ (const U& lhs, const Sarray<T>& rhs)
+	{
+		Sarray<decltype(lhs + rhs._items[0])> result(rhs._size);
+		result = rhs + lhs;
+		return result;
+	}
+
+
+
+	
+
+	
+
+
+	template<class U>
+	auto operator- (const Sarray<U>& rhs) const
+	{
+		SASSERT(rhs.getSize() == _size, " - operator with different size array.");
+		Sarray<decltype(_items[0] - rhs[0])> result(_size);
+		for (size_t i = 0; i < _size; i++) {
+			result[i] = this->_items[i] - rhs[i];
+		}
+		return result;
+	}
+
+	template<class U>
+	auto operator- (const U& rhs) const
+	{
+		Sarray<decltype(_items[0] - rhs)> result(_size);
+		for (size_t i = 0; i < _size; i++) {
+			result[i] = this->_items[i] - rhs;
+		}
+		return result;
+	}
+
+	template<class U>
+	friend auto operator- (const U& lhs, const Sarray<T>& rhs)
+	{
+		Sarray<decltype(lhs - rhs[0])> result(rhs._size);
+		result = rhs * T(-1) + lhs;
+		return result;
+	}
+
+	auto operator- () const
 	{
 		return (*this)*T(-1);
 	}
-	virtual Sarray operator+ (const Sarray& rhs) const
+
+	template<class U>
+	auto operator* (const Sarray<U>& rhs) const
 	{
-		SASSERT(rhs._size == _size, " + operation with different size array.");
-		Sarray sarray(_size);
-		for (size_t i = 0; i < _size; i++) {
-			sarray._items[i] = this->_items[i] + rhs._items[i];
+		SASSERT(rhs.getSize() == _size, " * operator with different size array.");
+		Sarray<decltype(_items[0] * rhs[0])> result(_size);
+		for (size_t i = 0; i < _size; i++) 
+		{
+			result[i] = _items[i] * rhs[i];
 		}
-		return sarray;
+		return result;
 	}
 
-	friend Sarray<T> operator+ (const T& lhs, const Sarray<T>& rhs)
+
+	template<class U>
+	auto operator* (const U& rhs) const
 	{
-		Sarray<T> sarray(rhs._size);
-		sarray = rhs + lhs;
-		return sarray;
+		Sarray<decltype(_items[0] * rhs)> result(_size);
+		for (size_t i = 0; i < _size; i++) {
+			result[i] = this->_items[i] * rhs;
+		}
+		return result;
 	}
 
-	friend Sarray<T> operator- (const T& lhs, const Sarray<T>& rhs)
+	template<class U>
+	friend auto operator* (const U& lhs, const Sarray<T>& rhs)
 	{
-		Sarray<T> sarray(rhs._size);
-		sarray = rhs * T(-1) + lhs;
-		return sarray;
+		Sarray<decltype(lhs * rhs[0])> result(rhs._size);
+		result = rhs * lhs;
+		return result;
 	}
 
-	friend Sarray<T> operator* (const T& lhs, const Sarray<T>& rhs)
+	template<class U>
+	auto operator/ (const Sarray<U>& rhs) const
 	{
-		Sarray<T> sarray(rhs._size);
-		sarray = rhs * lhs;
-		return sarray;
+		SASSERT(rhs.getSize() == _size, " / operator with different size array.");
+		Sarray<decltype(_items[0] / rhs[0])> result(_size);
+		for (size_t i = 0; i < _size; i++) {
+			result[i] = _items[i] / rhs[i];
+		}
+		return result;
 	}
 
-	friend Sarray<T> operator/ (const T& lhs, const Sarray<T>& rhs)
+	template<class U>
+	auto operator/ (const U& rhs) const
 	{
-		Sarray<T> sarray(rhs._size);
+		Sarray<decltype(_items[0] / rhs)> result(_size);
+		for (size_t i = 0; i < _size; i++)
+		{
+			result[i] = _items[i] / rhs;
+		}
+		return result;
+	}
+
+	template<class U>
+	friend auto operator/ (const U& lhs, const Sarray<T>& rhs)
+	{
+		Sarray<decltype(lhs / rhs[0])> result(rhs._size);
 		for (size_t i = 0; i < rhs._size; i++)
 		{
-			sarray._items[i] = lhs / rhs._items[i];
+			result[i] = lhs / rhs[i];
 		}
-		return sarray;
+		return result;
 	}
 
 
-	virtual Sarray operator+ (const T& rhs) const
-	{
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++)
-		{
-			arr._items[i] = this->_items[i] + rhs;
-		}
-		return arr;
-	}
 
-	virtual Sarray operator- (const Sarray& rhs) const
-	{
-		SASSERT(rhs._size == _size, " - operator with different size array.");
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++) {
-			arr._items[i] = this->_items[i] - rhs._items[i];
-		}
-		return arr;
-	}
 
-	virtual Sarray operator- (const T& rhs) const
-	{
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++) {
-			arr._items[i] = this->_items[i] - rhs;
-		}
-		return arr;
-	}
-
-	virtual Sarray operator* (const Sarray& rhs) const
-	{
-		SASSERT(rhs._size == _size, " * operator with different size array.");
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++) {
-			arr._items[i] = this->_items[i] * rhs._items[i];
-		}
-		return arr;
-	}
-
-	virtual Sarray operator* (const T& rhs) const
-	{
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++) {
-			arr._items[i] = this->_items[i] * rhs;
-		}
-		return arr;
-	}
-
-	virtual Sarray operator/ (const Sarray& rhs) const
-	{
-		SASSERT(rhs._size == _size, " / operator with different size array.");
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++) {
-			arr._items[i] = this->_items[i] / rhs._items[i];
-		}
-		return arr;
-	}
-
-	virtual Sarray operator/ (const T& rhs) const
-	{
-		Sarray arr(_size);
-		for (size_t i = 0; i < _size; i++)
-		{
-			arr._items[i] = this->_items[i] / rhs;
-		}
-		return arr;
-	}
 
 	virtual const T sum() const {
 		T s = T();
