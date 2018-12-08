@@ -304,12 +304,11 @@ public:
 	{
 		for (size_t i = 0; i < sarray.getSize(); i++)
 		{
-			os << std::endl << "data(" << i << ") = " << sarray[i];
+			os << std::endl << "Items(" << i << ") = " << sarray[i];
 		}
 		os << std::endl << std::endl;
 		return os;
 	}
-
 };
 
 
