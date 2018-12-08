@@ -54,7 +54,7 @@ int main() {
 		if (isPrint) cout << c;
 		SASSERT(IsEqual(c[0], 5.0) && IsEqual(c[1], 5.0), "Test Failed!");
 		SASSERT(c.getSize() == 2, "Test Failed!");
-		cout << "   OK. \n\n";
+		cout << "   Test Passed! \n\n";
 	}
 
 	{
@@ -65,7 +65,7 @@ int main() {
 		if (isPrint) cout << d;
 		SASSERT(IsEqual(d[0], 4.0) && IsEqual(d[1], 2.0) && IsEqual(d[2], 1.0), "Test Failed!");
 		SASSERT(d.getSize() == 3, "Test Failed!");
-		cout << "   OK. \n\n";
+		cout << "   Test Passed! \n\n";
 	}
 
 	{
@@ -76,7 +76,7 @@ int main() {
 		if (isPrint) cout << e;
 		SASSERT(IsEqual(e[0], 5.0) && IsEqual(e[1], 5.0), "Test Failed!");
 		SASSERT(e.getSize() == 2, "Test Failed!");
-		cout << "   OK. \n\n";
+		cout << "   Test Passed! \n\n";
 	}
 	cout << "Same type constructor 2 " << endl;
 	sardouble d(new double[3]{ 4.0,2.0,1.0 } , 3);
@@ -85,7 +85,7 @@ int main() {
 	if (isPrint) cout << f;
 	SASSERT(IsEqual(f[0], 4.0) && IsEqual(f[1], 2.0) && IsEqual(f[2], 1.0), "Test Failed!");
 	SASSERT(d.getSize() == 3, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "List constructor ... " << endl;
 	sardouble g{ 1.,2. };
@@ -93,7 +93,7 @@ int main() {
 	if (isPrint) cout << g;
 	SASSERT(IsEqual(g[0], 1.0) && IsEqual(g[1], 2.0), "Test Failed!");
 	SASSERT(g.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << "===========Assignment==============" << endl;
@@ -103,7 +103,7 @@ int main() {
 	if (isPrint) cout << c;
 	SASSERT(IsEqual(c[0], 2.1) && IsEqual(c[1], 2.1), "Test Failed!");
 	SASSERT(c.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "print same type & size assignment ..." << endl;
 	sardouble m(3);
@@ -112,7 +112,7 @@ int main() {
 	if (isPrint) cout << m;
 	SASSERT(IsEqual(m[0], 4.0) && IsEqual(m[1], 2.0) && IsEqual(m[2], 1.0), "Test Failed!");
 	SASSERT(m.getSize() == 3, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 
@@ -124,14 +124,14 @@ int main() {
 	if (isPrint) cout << un;
 	SASSERT(IsEqual(un[0], 1.5) && IsEqual(un[1], -2.5), "Test Failed!");
 	SASSERT(un.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Testing operator -un: " << endl;
 	un = (-un);
 	if (isPrint) cout << un;
 	SASSERT(IsEqual(un[0], -1.5) && IsEqual(un[1], 2.5), "Test Failed!");
 	SASSERT(un.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "===========Operators==============" << endl;
 	sardouble h = { 2.0,2.0 };
@@ -145,7 +145,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.2) && IsEqual(k[1], 4.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Left hand side + operator ... " << endl;
 	k = 2.1 + c;
@@ -153,7 +153,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.2) && IsEqual(k[1], 4.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Right hand side - operator ... " << endl;
 	k = c - 2.0;
@@ -161,7 +161,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 0.1) && IsEqual(k[1], 0.1), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Left hand side - operator ... " << endl;
 	k = 2.0 - c;
@@ -169,7 +169,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], -0.1) && IsEqual(k[1], -0.1), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Right hand side * operator " << endl;
 	k = c * 2.0;
@@ -177,7 +177,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.2) && IsEqual(k[1], 4.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Left hand side * operator ..." << endl;
 	k = 2.0*c;
@@ -185,7 +185,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.2) && IsEqual(k[1], 4.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Right hand side / operator ..." << endl;
 	k = c / 21.0;
@@ -193,7 +193,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 0.1) && IsEqual(k[1], 0.1), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Left hand side / operator ..." << endl;
 	k = 0.42 / c;
@@ -201,7 +201,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 0.2) && IsEqual(k[1], 0.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Mix operator ..." << endl;
 	k = k * c / 21.0;
@@ -209,7 +209,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 0.02) && IsEqual(k[1], 0.02), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "=========== Sarray-Sarray Operations ==============" << endl;
 	if (isPrint) cout << "Array c = {2.1,2.1}, h={2.,2.} is used below." << endl;
@@ -219,7 +219,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.1) && IsEqual(k[1], 4.1), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << " - operator ..." << endl;
@@ -228,7 +228,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 0.1) && IsEqual(k[1], 0.1), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << " * operator ..." << endl;
@@ -237,7 +237,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 4.2) && IsEqual(k[1], 4.2), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << " / operator ..." << endl;
 	if (isPrint) cout << "k=c/h" << endl;
@@ -245,7 +245,7 @@ int main() {
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 1.05) && IsEqual(k[1], 1.05), "Test Failed!");
 	SASSERT(k.getSize() == 2, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << "=========== Sarray-Scalar-Sarray (double-int) Mix Operation ==============" << endl;
@@ -257,7 +257,7 @@ int main() {
 	if (isPrint) cout << "k = c/0.5 * h + 1.0-2*c*0.5-(+h)*(-c) = {7.3,7.3} " << endl;
 	if (isPrint) cout << k;
 	SASSERT(IsEqual(k[0], 7.3) && IsEqual(k[1], 7.3), "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << "===========Integer Sarray==============" << endl;
@@ -268,7 +268,7 @@ int main() {
 	if (isPrint) cout << "l = 2*j/2 - j/(-i) + 3*j*i + i/100" << endl;
 	if (isPrint) cout << l;
 	SASSERT(l[0] == 50 && l[1] == 50, "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 
 	cout << "====== Implitcit type casting: Integer * Double =========" << endl;
@@ -303,7 +303,7 @@ int main() {
 	SASSERT(typeid(i / c) == typeid(sardouble) && typeid(c / i) == typeid(sardouble) &&
 		typeid(i / 1.5) == typeid(sardouble) && typeid(1.5 / i) == typeid(sardouble), "Test Failed!!");
 	if (isPrint) cout << "----- \n\n";
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "====== Explicit type casting =========" << endl;
 	if (isPrint)cout << "Sarray can be cast to desired type, if similar casting is available for its elements. \n"
@@ -316,7 +316,7 @@ int main() {
 	if (isPrint)cout << "Sarray<int>(c) * i = " << sarint(c) * i;
 	SASSERT(typeid((sardouble)i * c) == typeid(sardouble) && typeid(sardouble(i) * c) == typeid(sardouble) &&
 		typeid((sarint)c * i) == typeid(sarint) && typeid(sarint(c) * i) == typeid(sarint), "Test Failed!!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "===========Functions==============" << endl;
 
@@ -328,7 +328,7 @@ int main() {
 
 	SASSERT(IsEqual(c.dot(i), 4.5), "Test Failed!");
 	SASSERT(typeid(c.dot(i)) == typeid(double) && typeid(i.dot(c)) == typeid(double), "Test Failed!");
-	cout << "   OK. \n\n";
+	cout << "   Test Passed! \n\n";
 
 	cout << "Press Enter to close.\n\n";
 	cin.get();
