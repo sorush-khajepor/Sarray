@@ -1,7 +1,8 @@
-# Project Title
+# Sarray
 
-Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for basic arithmetic operations. for  a generic array of numbers which facilitate arithmetic operations for arrays.
-Supported operations are: +, -, *, /, negative, positive, dot product, cout, and explicit 
+Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for 
+basic arithmetic operations. It is a generic array and 
+supports: +, -, *, /, negative, positive, dot product, cout, and explicit 
 type casting, and promoted implicit type casting.
 
 ## Getting Started
