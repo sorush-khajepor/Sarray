@@ -44,7 +44,7 @@ int main() {
 #endif
 
 	// Print Test results on screen.
-	bool isPrint = false;
+	bool isPrint = true;
 
 	cout << "===========Testing Constructors==============" << endl;
 	cout << "scalar constructor" << endl;
