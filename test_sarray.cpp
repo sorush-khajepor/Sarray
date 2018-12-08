@@ -44,7 +44,7 @@ int main() {
 #endif
 
 	// Print Test results on screen.
-	bool isPrint = true;
+	bool isPrint = false;
 
 	cout << "===========Testing Constructors==============" << endl;
 	cout << "scalar constructor" << endl;
@@ -150,7 +150,7 @@ int main() {
 
 	cout << "Right hand side + operator ... " << endl;
 	{
-		if (isPrint) cout << "Array c = {2.1,2.1}, h={2.,2.} is used below." << endl;
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1,2.1 };
 		k = c + 2.1;
@@ -162,6 +162,7 @@ int main() {
 	}
 	cout << "Left hand side + operator ... " << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1, 2.1}, Sardouble k={2.1, 2.1} are used below." << endl;
 		Sardouble k{ 2.1, 2.1 };
 		Sardouble c{ 2.1, 2.1 };
 		k = 2.1 + c;
@@ -174,6 +175,7 @@ int main() {
 
 	cout << "Right hand side - operator ... " << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = c - 2.0;
@@ -186,6 +188,7 @@ int main() {
 
 	cout << "Left hand side - operator ... " << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = 2.0 - c;
@@ -198,6 +201,7 @@ int main() {
 
 	cout << "Right hand side * operator " << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = c * 2.0;
@@ -209,6 +213,7 @@ int main() {
 	}
 	cout << "Left hand side * operator ..." << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = 2.0*c;
@@ -220,6 +225,7 @@ int main() {
 	}
 	cout << "Right hand side / operator ..." << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = c / 21.0;
@@ -231,6 +237,7 @@ int main() {
 	}
 	cout << "Left hand side / operator ..." << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		k = 0.42 / c;
@@ -242,6 +249,7 @@ int main() {
 	}
 	cout << "Mix operator ..." << endl;
 	{
+		if (isPrint) cout << "Sardouble c = {2.1,2.1}, Sardouble k(2) are used below." << endl;
 		Sardouble k{ 0.2, 0.2 };
 		Sardouble c{ 2.1, 2.1 };
 		k = k * c / 21.0;
@@ -256,6 +264,7 @@ int main() {
 	if (isPrint) cout << "\nArray c = {2.1,2.1}, h={2.,2.} is used below." << endl;
 	cout << " + operator ... " << endl;
 	{
+		if (isPrint) cout << "\n c = {2.1,2.1}, h={2.,2.} are used below." << endl;
 		Sardouble k(2);
 		Sardouble h(2.0, 2);
 		Sardouble c{ 2.1, 2.1 };
@@ -268,6 +277,7 @@ int main() {
 	}
 	cout << " - operator ..." << endl;
 	{
+		if (isPrint) cout << "\n c = {2.1,2.1}, h={2.,2.} are used below." << endl;
 		Sardouble k(2);
 		Sardouble h(2.0, 2);
 		Sardouble c{ 2.1, 2.1 };
@@ -280,6 +290,7 @@ int main() {
 	}
 	cout << " * operator ..." << endl;
 	{
+		if (isPrint) cout << "\n c = {2.1,2.1}, h={2.,2.} are used below." << endl;
 		Sardouble k(2);
 		Sardouble h(2.0, 2);
 		Sardouble c{ 2.1, 2.1 };
@@ -292,6 +303,7 @@ int main() {
 	}
 	cout << " / operator ..." << endl;
 	{
+		if (isPrint) cout << "\n c = {2.1,2.1}, h={2.,2.} are used below." << endl;
 		Sardouble k(2);
 		Sardouble h(2.0, 2);
 		Sardouble c{ 2.1, 2.1 };
@@ -308,6 +320,7 @@ int main() {
 
 	cout << "Mix operator ..." << endl;
 	{
+		if (isPrint) cout << "Sarray<double> c = {2.1,2.1}, h={2.0,2.0}, and Sarray<int> i={1,1} are used below." << endl;
 		Sardouble k(2);
 		Sardouble c{ 2.1, 2.1 };
 		Sardouble h{ 2.0, 2.0 };
@@ -319,8 +332,9 @@ int main() {
 		cout << "~~~ Test Passed! ~~~ \n\n";
 	}
 
-	cout << "===========Integer Sarray==============" << endl;
+	cout << "===========Integer Sarray Sarray Mix Operations ==============" << endl;
 	{
+		if (isPrint) cout << "Sarray<int> j = {10,10} and Sarray<int> i={1,1} are used below." << endl;
 		Sarint l(0, 2);
 		Sarint j = { 10,10 };
 		Sarint i = { 1,1 };
@@ -351,6 +365,7 @@ int main() {
 
 	cout << "-----> -operator \n\n";
 	{
+		if (isPrint) cout << "c={2.1,2.1}, i={1,1}" << endl;
 		Sardouble c{ 2.1, 2.1 };
 		Sarint i = { 1,1 };
 		if (isPrint) cout << "Type of i-c is " << typeid(i - c).name() << " result =  " << i - c;
@@ -363,6 +378,7 @@ int main() {
 
 	cout << "-----> * operator \n\n";
 	{
+		if (isPrint) cout << "c={2.1,2.1}, i={1,1}" << endl;
 		Sardouble c{ 2.1, 2.1 };
 		Sarint i = { 1,1 };
 		if (isPrint) cout << "Type of i*c is " << typeid(i * c).name() << " result =  " << i * c;
@@ -375,6 +391,7 @@ int main() {
 
 	cout << "-----> / operator \n\n";
 	{
+		if (isPrint) cout << "c={2.1,2.1}, i={1,1}" << endl;
 		Sardouble c{ 2.1, 2.1 };
 		Sarint i = { 1,1 };
 		if (isPrint) cout << "Type of i/c is " << typeid(i / c).name() << " result =  " << i / c;
