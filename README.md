@@ -1,6 +1,8 @@
 # Project Title
 
-One Paragraph of project description goes here
+Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for basic arithmetic operations. for  a generic array of numbers which facilitate arithmetic operations for arrays.
+Supported operations are: +, -, *, /, negative, positive, dot product, cout, and explicit 
+type casting, and promoted implicit type casting.
 
 ## Getting Started
 
@@ -78,7 +80,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the BSD-3-Clause - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
