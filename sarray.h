@@ -12,9 +12,9 @@
 
 /*
 Sarray is an array of numbers which facilitate arithmetic operations of arrays.
-Supported operations are: +, -, *, /, negative, positive, dot product, cout, and explicit 
+Supported operations are: +, -, *, /, negative, positive, dot product, std::cout, and explicit 
 type casting, and promoted implicit type casting.
-Type T must be of numeric type such as int and double because of the purpose of Sarray.
+Type T must be of numeric type such as integer and double because of the purpose of Sarray.
 Debug Assert: For arithmetic and assignment operations of arrays must have the same size.
 Assumption: Assignment of Sarray with C language array assumes C array has the same size.
 Assumption: CopyTo C-language-array assumes the array has the same size as this Sarray.
