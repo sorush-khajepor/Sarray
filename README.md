@@ -37,9 +37,6 @@ The tests must be run in debug mode, as the Assert function is used to assess th
 
 Please feel free to contact us if you are interested for adding features. 
 
-## Authors
-
-* **Sorush Khajepor**
 
 ## License
 
