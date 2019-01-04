@@ -31,34 +31,16 @@ cd Debug
 test_sarray.exe
 ```
 in Linux the executable file has no extension.
-The tests must be run in debug mode, as the Assert function is used to assess the results. For this purpose, a 
-
-```
-Give an example
-```
-
+The tests must be run in debug mode, as the Assert function is used to assess the results. 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Please feel free to contact us if you are interested for adding features. 
 
 ## Authors
 
 * **Sorush Khajepor**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
-This project is licensed under the BSD-3-Clause - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+This project is licensed under the BSD-3-Clause - see the [LICENSE.md](LICENSE.md) file for details.
