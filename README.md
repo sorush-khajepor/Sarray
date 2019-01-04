@@ -1,9 +1,10 @@
 # Sarray 🌟
 
+Have you found yourself in the endless circle of writing for-loops in numerical projects? 
 Sarray simplifies working with arrays in C++  💯. It dramatically decreases lines of code used for 
 basic arithmetic operations 👌. It is a generic array and 
-supports: +, -, *, /, negative, positive, dot product, std::cout, and explicit 
-type casting, and promoted implicit type casting 🤓.
+supports: +, -, *, /, negative, positive, dot product, std::cout, assignment, explicit 
+type-casting, and promoted implicit type-casting 🤓.
 
 ## Getting Started 🏁
 
