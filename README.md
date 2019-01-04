@@ -43,7 +43,7 @@ int main()
 	// A little bit more complex stuff
 	std::cout << b * a / 8.0 * i * 1.234; // gives (1.234, 1.234, 1.234)
 
-	// Cheesecake, isn't it?
+	// Cheesecake 🍰, isn't it?
 	return 0;
 }
 ```
