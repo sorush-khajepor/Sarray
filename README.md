@@ -1,13 +1,13 @@
-# Sarray
+# Sarray 🌟
 
-Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for 
-basic arithmetic operations. It is a generic array and 
+Sarray simplifies working with arrays in C++  💯. It dramatically decreases lines of code used for 
+basic arithmetic operations 👌. It is a generic array and 
 supports: +, -, *, /, negative, positive, dot product, std::cout, and explicit 
-type casting, and promoted implicit type casting.
+type casting, and promoted implicit type casting 🤓.
 
-## Getting Started
+## Getting Started 🏁
 
-Add Sarray header to your project and you are good to go. Below, I show a little bit of what you can do 
+Add Sarray header to your project and you are good to go 😎. Below, I show a little bit of what you can do 
 with Sarray. For complete features, check test_sarray.cpp file which contains all the features.
 
 ```c++
@@ -43,18 +43,17 @@ int main()
 	// A little bit more complex stuff
 	std::cout << b * a / 8.0 * i * 1.234; // gives (1.234, 1.234, 1.234)
 
-	// Cheesecake 🍰, isn't it?
+	
 	return 0;
 }
 ```
 
-
-### Prerequisites
+### Prerequisites 💽
 
 You need only a C++ compiler of version 14 or above to make use of Sarray. If you have CMake installed, you can compile the tests easily (see below).
 
 
-## Running the tests
+## Running the tests ✔️
 
 A comprehensive set of tests are written for sarray. You can simply compile them by
 following the step below and see the results on screen.
@@ -73,11 +72,11 @@ test_sarray.exe
 in Linux the executable file has no extension.
 The tests must be run in debug mode, as the Assert function is used to assess the results. 
 
-## Contributing
+## Contributing 💁🏽
 
 Please feel free to contact us if you are interested for adding features. 
 
 
-## License
+## License 📃
 
 This project is licensed under the BSD-3-Clause - see the [LICENSE.md](LICENSE.md) file for details.
