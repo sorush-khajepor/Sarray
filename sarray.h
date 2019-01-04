@@ -1,9 +1,6 @@
 #ifndef SARRAY_H
 #define SARRAY_H
 
-// SDEBUG activates debug mode and assertion.
-#define SDEBUG
-
 // Handles Debug and Assert functions. Debug functions are not
 // employed if SDEBUG is not defined.
 #include"sdebug.h"
