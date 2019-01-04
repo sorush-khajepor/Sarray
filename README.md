@@ -55,7 +55,7 @@ You need only a C++ compiler of version 14 or above to make use of Sarray. If yo
 
 ## Running the tests ✔️
 
-A comprehensive set of tests are written for sarray. You can simply compile them by
+A comprehensive set of tests are written for Sarray in test_sarray.cpp. You can simply compile them by
 following the step below and see the results on screen.
 In Linux or Mac OS terminal or Windows command prompt run these commands
 ```
@@ -69,8 +69,13 @@ The executable file will be created in a Debug directory. Therefore, run them by
 cd Debug
 test_sarray.exe
 ```
-in Linux the executable file has no extension.
-The tests must be run in debug mode, as the Assert function is used to assess the results. 
+In Linux the executable file has no extension.
+The tests are run in the Sdebug mode, as SASSERT function, defined in sdebug.h, is used to assess the results.
+Sdebug mode is switched on by definition of 
+```c++
+#def SDEBUG
+```
+in the beginning of test_sarray.cpp.
 
 ## Contributing 💁🏽
 
