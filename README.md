@@ -2,7 +2,7 @@
 
 Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for 
 basic arithmetic operations. It is a generic array and 
-supports: +, -, *, /, negative, positive, dot product, cout, and explicit 
+supports: +, -, *, /, negative, positive, dot product, std::cout, and explicit 
 type casting, and promoted implicit type casting.
 
 ## Getting Started
@@ -11,33 +11,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You need only a C++ compiler of version 14 or above to make use of Sarray. If you have CMake installed, you can compile the tests easily (see below).
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+A comprehensive set of tests are written for sarray. You can simply compile them by
+following the step below and see the results on screen.
+In Linux or Mac OS terminal or Windows command prompt run these commands
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+The executable file will be created in a Debug directory. Therefore, run them by
+```
+cd Debug
+test_sarray.exe
+```
+in Linux the executable file has no extension.
+The tests must be run in debug mode, as the Assert function is used to assess the results. For this purpose, a 
 
 ### Break down into end to end tests
 
