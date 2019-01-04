@@ -5,15 +5,18 @@ Unit tests for Sarray<T> class
 
 // Activates SASSERT which is used for assertion of tests
 #define SDEBUG
+
+// Using Sarray library
 #include"sarray.h"
 
-// This is added to use abs() function
+// This is added to use absolute function, abs().
 #include<cmath>
 
 // This is added to implement typeid() function which shows
 // the dynamic type of objects.
 #include <typeinfo>
 
+// Some lazy typing
 typedef Sarray<double> Sardouble;
 typedef Sarray<int> Sarint;
 
@@ -44,6 +47,7 @@ int main() {
 #endif
 
 	// Print Test results on screen.
+	// Make it false to see less on screen.
 	bool isPrint = true;
 
 	cout << "===========Testing Constructors==============" << endl;
