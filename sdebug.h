@@ -7,7 +7,7 @@ Usage: define it at the top of the file which should be debugged:
 
 #ifdef SDEBUG
 
-  // NDEBUG switches assertation off. For safety, it is undefined.
+  // NDEBUG switches assertion off. For safety, it is undefined.
   #undef NDEBUG
   #include <cassert>
 
