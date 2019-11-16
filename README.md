@@ -59,14 +59,14 @@ You need only a C++ compiler of version 14 or above to make use of Sarray. If yo
 A comprehensive set of tests are written for Sarray in test_sarray.cpp. You can simply compile them by
 following the step below and see the results on screen.
 In Linux or Mac OS terminal or Windows command prompt run these commands
-```
+```bash
 mkdir build
 cd build
 cmake ..
 cmake --build .
 ```
 The executable file will be created in a Debug directory. Therefore, run them by
-```
+```bash
 cd Debug
 test_sarray.exe
 ```
