@@ -1,14 +1,17 @@
 # Sarray 🌟
 
 Have you found yourself in the endless circle of writing for-loops in numerical projects? 
-Sarray simplifies working with arrays in C++  💯. It dramatically decreases lines of code used for 
-basic arithmetic operations 👌. It is a generic array and 
-supports: +, -, *, /, negative, positive, dot product, std::cout, assignment, explicit 
-type-casting, and promoted implicit type-casting 🤓.
+Sarray simplifies working with arrays in C++ . It dramatically decreases lines of code used for 
+basic arithmetic operations. It is a generic array and 
+supports: +, -, \*, /, negative, positive, dot product, `std::cout`, assignment, explicit 
+type-casting, and promoted implicit type-casting. Sarray is a simple form of `std::valarray` that
+can be added to your project and be extended to your need. Sarray is targetting  simplicity than 
+efficiency. For interested readers, using [Expression templates](https://en.wikipedia.org/wiki/Expression_templates) is a 
+way to improve the efficiency in this kind of programs.
 
 ## Getting Started 🏁
 
-Add Sarray header to your project and you are good to go 😎. Below, I show a little bit of what you can do 
+Add Sarray header to your project and you are good to go . Below, I show a little bit of what you can do 
 with Sarray. For complete features, check test_sarray.cpp file which contains all the features.
 
 ```c++
@@ -78,9 +81,9 @@ Sdebug mode is switched on by definition of
 ```
 in the beginning of test_sarray.cpp.
 
-## Contributing 💁🏽
+## Contributing 
 
-Please feel free to contact us if you are interested for adding features. 
+Please feel free to raise an issue and submit a pull-request.
 
 
 ## License 📃
