@@ -52,7 +52,7 @@ int main()
 	// A little bit more complex stuff
     auto r = b * a / 4.0 * b / b * 5;
 	std::cout << r; //  (5, 5, 5)
-
+ 
 	
 	return 0;
 }
