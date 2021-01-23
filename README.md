@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.com/sorush-khajepor/Sarray.svg?branch=master)](https://travis-ci.com/sorush-khajepor/Sarray)
+
 # Sarray
 
 Have you found yourself in the endless circle of writing for-loops in numerical projects? 
