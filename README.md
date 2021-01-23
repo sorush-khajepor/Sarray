@@ -1,7 +1,7 @@
 # Sarray
 
 Have you found yourself in the endless circle of writing for-loops in numerical projects? 
-Sarray simplifies working with arrays in C++ . It dramatically decreases lines of code used for 
+Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for 
 basic arithmetic operations. It is a generic array and 
 supports: +, -, \*, /, negative, positive, dot product, `std::cout`, assignment, explicit 
 type-casting, and promoted implicit type-casting. Sarray is a simple form of `std::valarray` that
@@ -12,7 +12,7 @@ way to improve the efficiency in this kind of programs.
 ## Getting Started
 
 Add Sarray header to your project and you are good to go . Below, I show a little bit of what you can do 
-with Sarray. For complete features, check test_sarray.cpp file which contains all the features.
+with Sarray. For complete features, check tests.cpp file which contains all the features.
 
 ```c++
 #include "sarray.h"
@@ -40,8 +40,6 @@ int main()
 	cout<< a/b; // (0.25, 1, 4) double
     cout<< 1/b; //  (0,0,1) int
 	cout<< b/2.0; // (2, 1, 0.5) double
-
-
 
 	// Find dot product
 	std::cout << a.dot(b)<<endl; // 12
