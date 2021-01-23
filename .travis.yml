@@ -1,0 +1,23 @@
+language: cpp
+dist: focal
+compiler: gcc
+os: linux
+sudo: true
+env:
+    - BUILD_TYPE=Debug
+
+# default gcc for Ubuntu Focal is v9, upgraded to v10 as I need C++ concepts
+# It increases build time by ~1 min, uncomment if needed.
+addons:
+        apt:
+              sources:
+                  - sourceline: “ppa:ubuntu-toolchain-r/test”
+              packages:
+                  - gcc-10
+                  - g++-10
+install:
+ /usr/bin/gcc points to an older compiler on Linux.
+- if [ "$CXX" = "g++" ]; then export CXX="g++-10" CC="gcc-10"; fi
+script: 
+  - ./run_tests.sh
+  

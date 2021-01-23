@@ -19,7 +19,7 @@ Usage: define it at the top of the file which should be debugged:
   {                                                                              \
       if(!(condition))                                                           \
       {                                                                          \
-          std::cerr << message<<endl;                                            \
+          std::cerr << message<<std::endl;                                            \
           std::cerr << "Assertion failed at " << __FILE__ << ":" << __LINE__;    \
           std::cerr << " inside " << __FUNCTION__ << std::endl;                  \
           std::cerr << "Condition: " << #condition;                              \
