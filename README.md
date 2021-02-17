@@ -3,12 +3,10 @@
 
 # Sarray
 
-Have you found yourself in the endless circle of writing for-loops in numerical projects? 
 Sarray simplifies working with arrays in C++. It dramatically decreases lines of code used for 
-basic arithmetic operations. It is a generic array and 
+basic arithmetic operations. It is a wrapper of std::array and 
 supports: +, -, \*, /, negative, positive, dot product, `std::cout`, assignment, explicit 
-type-casting, and promoted implicit type-casting. Sarray is a simple form of `std::valarray` that
-can be added to your project and be extended to your need. Sarray is targetting  simplicity than 
+type-casting, and promoted implicit type-casting. Sarray is a one-file header that can be added to your project and be extended to your need. Sarray is targetting  simplicity than 
 efficiency. For interested readers, using [Expression templates](https://en.wikipedia.org/wiki/Expression_templates) is a 
 way to improve the efficiency in this kind of programs.
 
